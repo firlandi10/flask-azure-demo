@@ -5,6 +5,19 @@
 </head>
 <body>
     <h2>Login</h2>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Login Lokal -->
     <form method="POST">
         <label>Email:</label><br>
         <input type="text" name="email"><br><br>
@@ -15,6 +28,9 @@
         <input type="submit" value="Login">
     </form>
 
-    <p>Belum punya akun? <a href="/register">Daftar di sini</a></p>
-</body>
-</html>
+    <p>Belum punya akun? <a href="{{ url_for('register') }}">Daftar di sini</a></p>
+
+    <hr>
+
+    <!-- Login via Auth0 -->
+    <p
